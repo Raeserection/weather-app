@@ -1,11 +1,12 @@
-# ![Weather App](weather-app.PNG)
+<!-- # ![Weather App](weather-app.PNG) -->
 
-A simple weather application built with Laravel 10 that utilizes the OpenWeather API to provide real-time weather information.
+A simple weather application built with Laravel 10 that utilizes the OpenWeather API and GEOAPIFY API to provide real-time weather and location information.
 
 ## Features
 
 -   **Current Weather**: Get the current weather conditions for a specific location.
 -   **Forecast**: Retrieve a 5-day weather forecast for a given location.
+-   **Location Details**: Retrieves Some Location data from GEOAPIFY API
 
 ## Getting Started
 
@@ -42,6 +43,7 @@ A simple weather application built with Laravel 10 that utilizes the OpenWeather
 
     ```bash
         OPENWEATHER_API_KEY=your-api-key
+        GEOAPIFY_API_KEY=your-api-key
 
     ```
 
