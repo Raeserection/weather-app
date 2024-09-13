@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class WeatherController extends Controller
 {
@@ -57,7 +58,7 @@ class WeatherController extends Controller
         }
 
         $cityToken = $request->input('placeID');
-
+        // dd($cityToken);
         $city = $request->input('city');
         $url = 'https://api.openweathermap.org/data/2.5/forecast?q=' . $city . '&appid=' . $API_KEY;
 
@@ -70,6 +71,14 @@ class WeatherController extends Controller
         if ($response->successful()) {
             $data = $response->json();
             $dataGeo = $responseGeo->json();
+
+            
+
+            $timezone = $dataGeo['features'][0]['properties']['timezone']['offset_STD'] ?? null;
+            $website = $dataGeo['features'][0]['properties']['website'] ?? null;
+            // Log::info('responseGeo: ', [$responseGeo->json()]);
+            // $timezone = 'What';
+            // $website = 'What';
 
             $temp = $this->convertTemperature($data['list'][0]['main']['temp']);
             $humidity = $data['list'][0]['main']['humidity'];
@@ -89,7 +98,7 @@ class WeatherController extends Controller
                 ${"icon{$i}Url"} = 'http://openweathermap.org/img/w/' . ${"icon{$i}"} . '.png';
             }
 
-            return view('results', compact('city', 'country', 'temp', 'humidity', 'wind', 'clouds', 'pressure', 'weather', 'weatherDescription', 'iconUrl', 'day0Temp', 'day1Temp', 'day2Temp', 'day3Temp', 'icon0Url', 'icon1Url', 'icon2Url', 'icon3Url'));
+            return view('results', compact('timezone','website','city', 'country', 'temp', 'humidity', 'wind', 'clouds', 'pressure', 'weather', 'weatherDescription', 'iconUrl', 'day0Temp', 'day1Temp', 'day2Temp', 'day3Temp', 'icon0Url', 'icon1Url', 'icon2Url', 'icon3Url'));
         } else {
             return redirect()->route('home')->with('error', 'Failed to fetch weather data.');
         }

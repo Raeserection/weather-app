@@ -285,10 +285,10 @@
                         <p class="title">City</p>
                         <span class="value">{{ $city }}</span>
                     </div>
-                    {{-- <div class="content">
+                    <div class="content">
                         <p class="title">Country Code</p>
                         <span class="value">{{ $country }}</span>
-                    </div> --}}
+                    </div>
                     <div class="content">
                         <p class="title">TEMP</p>
                         <span class="value">{{ $temp }}°C</span>
@@ -301,6 +301,19 @@
                         <p class="title">WIND SPEED</p>
                         <span class="value">{{ $wind }}Km/h</span>
                     </div>
+                    @isset($timezone)
+                    <div class="content">
+                        <p class="title">TIMEZONE</p>
+                        <span class="value">{{ $timezone }}</span>
+                    </div>
+                    @endisset
+                    @isset($website)
+                    <div class="content">
+                        <p class="title">WEBSITE</p>
+                        <a href="{{ $website }}" class="value">{{ $website }}</a>
+                    </div>
+                    @endisset
+
                 </div>
                 <div class="list_content">
                     <ul>
@@ -456,6 +469,8 @@
                             /* Set the value for the autocomplete text field and notify: */
                             itemElement.addEventListener("click", function(e) {
                                 inputElement.value = currentItems[index].formatted;
+                                hiddenInput.value = currentItems[index].place_id;
+                                console.log("hidden: ",hiddenInput.value);
                                 callback(currentItems[index]);
                                 /* Close the list of autocompleted values: */
                                 closeDropDownList();
@@ -518,7 +533,6 @@
 
                 // Change input value and notify
                 inputElement.value = currentItems[index].formatted;
-                hiddenInput.value = currentItems[index].place_id;
                 callback(currentItems[index]);
             }
 

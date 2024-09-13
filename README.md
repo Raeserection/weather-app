@@ -1,6 +1,10 @@
 <!-- # ![Weather App](weather-app.PNG) -->
 
-A simple weather application built with Laravel 10 that utilizes the OpenWeather API and GEOAPIFY API to provide real-time weather and location information.
+Forked from mgmr99/weather-app
+
+A simple application built with Laravel 10 that utilizes the OpenWeather API and GEOAPIFY API to provide real-time weather and location information.
+
+As Edited By Euclide Andrae F. Arroyo for a Coding Examination for Bizmates PH.
 
 ## Features
 
@@ -67,6 +71,10 @@ Navigate to the home page.
 Enter the city name or coordinates.
 Click on the "Search" button to retrieve current conditions or forecasts.
 
-## Contributing
+## Explanation
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+I will Admit that the code was made hastily but this project shows my adapatibility and resourcefulness in using resources available to me.
+It also shows my ability to learn new skills fast and understand how to use API that previously was not known to me.
+
+I Used the autocomplete provided by geoapify to make the user experience more cleaner and be able to be more precise at the same time
+Since this app will not be the main research tool and only give some details, we also provide the website of the location also provided by the API Becuase of this, and Timezone as well
