@@ -431,7 +431,7 @@
 
                         // The API Key provided is restricted to JSFiddle website
                         // Get your own API Key on https://myprojects.geoapify.com
-                        const apiKey = "8e89b59a08874e689aabe50d1183594c";
+                        const apiKey = "{{ env('GEOAPIFY_API_KEY') }}";
 
                         var url =
                             `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&format=json&limit=5&apiKey=${apiKey}`;
